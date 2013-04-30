@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/m/cg/glm'
+let g:netrw_dirhist_2='/home/m/rfid/openbeacon/host/services/openbeacon-tracker'
+let g:netrw_dirhist_3='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/demo-javascript'
+let g:netrw_dirhist_4='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/analyze-network/png'
+let g:netrw_dirhist_5='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/logs'
+let g:netrw_dirhist_6='/home/m/sensor/dataset'
