@@ -1,14 +1,11 @@
 " File: taglist.vim
 " Author: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
-<<<<<<< HEAD
 " Version: 4.6
 " Last Modified: Feb 26, 2013
 " Copyright: Copyright (C) 2002-2013 Yegappan Lakshmanan
-=======
 " Version: 4.5
 " Last Modified: September 21, 2007
 " Copyright: Copyright (C) 2002-2007 Yegappan Lakshmanan
->>>>>>> 844064ebb41bf83483cbbca74e1682da9db9c8a2
 "            Permission is hereby granted to use and distribute this code,
 "            with or without modifications, provided that this copyright
 "            notice is copied with it. Like anything else that's free,
@@ -63,16 +60,13 @@
 " ****************** Do not modify after this line ************************
 
 " Line continuation used here
-<<<<<<< HEAD
 if !exists('s:cpo_save')
     " If the taglist plugin is sourced recursively, the 'cpo' setting will be
     " set to the default value.  To avoid this problem, save the cpo setting
     " only when the plugin is loaded for the first time.
     let s:cpo_save = &cpo
 endif
-=======
 let s:cpo_save = &cpo
->>>>>>> 844064ebb41bf83483cbbca74e1682da9db9c8a2
 set cpo&vim
 
 if !exists('loaded_taglist')

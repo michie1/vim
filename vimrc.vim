@@ -73,3 +73,5 @@ autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/
 "nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
 autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
 
+" Fix backspace
+set bs=2
