@@ -1,13 +1,7 @@
 let g:netrw_dirhistmax  =10
-<<<<<<< HEAD
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/m/cg/glm'
-let g:netrw_dirhist_2='/home/m/rfid/openbeacon/host/services/openbeacon-tracker'
-let g:netrw_dirhist_3='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/demo-javascript'
-let g:netrw_dirhist_4='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/analyze-network/png'
-let g:netrw_dirhist_5='/home/m/rfid/openbeacon/host/services/openbeacon-tracker/logs'
-let g:netrw_dirhist_6='/home/m/sensor/dataset'
-=======
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/m/cg/demo'
->>>>>>> 844064ebb41bf83483cbbca74e1682da9db9c8a2
+let g:netrw_dirhist_2='/media/sda6/bioharness'
+let g:netrw_dirhist_3='/media/sda6/bioharness/2013_04_13-16_50_44'
+let g:netrw_dirhist_4='/home/m/re3/hoi'
+let g:netrw_dirhist_5='/home/m/sensor/dataset'

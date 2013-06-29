@@ -74,3 +74,7 @@ autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/
 autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
 
 let Tlist_Use_Right_Window = 1
+
+" latex
+" autocmd BufWritePost,FileWritePost *.tex silent !latex <afile> 1>/dev/null
+autocmd BufWritePost,FileWritePost *.tex silent !pdflatex "thesis.tex" 1>/dev/null
