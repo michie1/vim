@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/m/cg/demo'
 let g:netrw_dirhist_2='/media/sda6/bioharness'
 let g:netrw_dirhist_3='/media/sda6/bioharness/2013_04_13-16_50_44'
 let g:netrw_dirhist_4='/home/m/re3/hoi'
 let g:netrw_dirhist_5='/home/m/sensor/dataset'
+let g:netrw_dirhist_6='/home/m/Dropbox/studie/mms/mdc/ml-100k'
