@@ -77,4 +77,3 @@ autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
 set bs=2
 
 
-" autocmd BufWritePost,FileWritePost *.tex silent !pdflatex thesis.tex 1>/dev/null
