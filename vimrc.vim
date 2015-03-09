@@ -39,13 +39,13 @@ map td :tabclose<CR>
 "nmap <F9> :g++ % && ./a.out
 
 "nmap <F9> \rc<bar>\rr
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 au! BufWritePost .vimrc source % 
 "au BufRead,BufNewFile  *.c++  set filetype=c++
 "au BufRead,BufNewFile  *.h  set filetype=c++
 
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
+"let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+"let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 
 "row width"
@@ -75,5 +75,23 @@ autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
 
 " Fix backspace
 set bs=2
+
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%71v.\+/
+
+" replaces cout by std::cout
+iab cout  std::cout
+iab endl std::endl
+
+" Bij begin/eindigen vim niet vragen om sessie te openen/ op te slaan
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+" Troep bij begin weghalen ;2R^[[>1:2802;0c
+"autocmd VimEnter * redraw!
+
+" no files in list vim-startify
+let g:startify_files_number = 0
+let g:startify_enable_special = 0
 
 
