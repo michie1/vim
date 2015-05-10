@@ -59,11 +59,12 @@ map <F4> :TlistToggle<cr>
 "colorscheme ir_black
 "colorscheme hemisu
 "colorscheme solarized
-set t_Co=256
+"set t_Co=256
 syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+"colorscheme flattown
+"let g:solarized_termcolors=256
 
 
 " coffeescript
@@ -94,4 +95,7 @@ let g:session_autoload = 'no'
 let g:startify_files_number = 0
 let g:startify_enable_special = 0
 
-
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
