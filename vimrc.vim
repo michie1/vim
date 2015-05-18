@@ -99,3 +99,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+"http://stackoverflow.com/questions/908269/opening-ctags-in-new-tab-in-gvim
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
