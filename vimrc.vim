@@ -66,6 +66,8 @@ syntax enable
 "colorscheme flattown
 "let g:solarized_termcolors=256
 
+colorscheme PaperColor
+
 
 " coffeescript
 autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/null
