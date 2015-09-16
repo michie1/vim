@@ -61,12 +61,14 @@ map <F4> :TlistToggle<cr>
 "colorscheme solarized
 "set t_Co=256
 syntax enable
-"set background=dark
 "colorscheme solarized
+"colorscheme base16-default
 "colorscheme flattown
 "let g:solarized_termcolors=256
 
-colorscheme PaperColor
+"colorscheme PaperColor
+"set background=dark
+"let base16colorspace=256
 
 
 " coffeescript
