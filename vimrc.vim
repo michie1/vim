@@ -106,3 +106,5 @@ noremap <Right> <NOP>
 
 "http://stackoverflow.com/questions/908269/opening-ctags-in-new-tab-in-gvim
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+set foldmethod=syntax
