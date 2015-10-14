@@ -108,3 +108,4 @@ noremap <Right> <NOP>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 set foldmethod=syntax
+set foldlevel=99 
