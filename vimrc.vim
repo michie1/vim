@@ -59,15 +59,15 @@ map <F4> :TlistToggle<cr>
 "colorscheme ir_black
 "colorscheme hemisu
 "colorscheme solarized
-"set t_Co=256
 syntax enable
-"colorscheme solarized
+"let g:solarized_termcolors=256
+"set t_Co=256
+set background=dark
+colorscheme solarized
 "colorscheme base16-default
 "colorscheme flattown
-"let g:solarized_termcolors=256
 
 "colorscheme PaperColor
-"set background=dark
 "let base16colorspace=256
 
 
@@ -109,3 +109,14 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 set foldmethod=syntax
 set foldlevel=99 
+
+"insert } after {
+"autocmd filetype cpp,c inoremap {<CR> {<CR>}<Esc>O
+
+" use English spell checker
+" set spelllang=en_us
+'cabbrev spell setlocal spell spelllang=en_us
+'cabbrev nospell setlocal nospell
+
+set undofile
+set undodir=~/.vim/undodir
