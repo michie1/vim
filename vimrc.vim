@@ -115,8 +115,8 @@ set foldlevel=99
 
 " use English spell checker
 " set spelllang=en_us
-'cabbrev spell setlocal spell spelllang=en_us
-'cabbrev nospell setlocal nospell
+"cabbrev spell setlocal spell spelllang=en_us
+"cabbrev nospell setlocal nospell
 
 set undofile
 set undodir=~/.vim/undodir
