@@ -120,3 +120,5 @@ set foldlevel=99
 
 set undofile
 set undodir=~/.vim/undodir
+
+map <C-n> :NERDTreeToggle<CR>
