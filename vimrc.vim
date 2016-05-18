@@ -21,6 +21,7 @@ set tabstop=2
 set smartindent
 set mouse=a
 set number
+set relativenumber
 
 :ca W w
 
@@ -123,3 +124,7 @@ set undodir=~/.vim/undodir
 
 map <C-n> :NERDTreeToggle<CR>
 :set directory=$HOME/.vim/swapfiles//
+
+
+" vim airline
+set laststatus=2
