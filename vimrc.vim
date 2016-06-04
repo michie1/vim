@@ -15,9 +15,9 @@ let OmniCpp_MayCompleteArrow = 1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Finally, the command set sw=4 sets the shift width (the number of characters text is moved sideways for the shift command (<< and >>)). "
-set sw=2
-set ts=2 "tabspaces"
-set tabstop=2
+set sw=4
+set ts=4 "tabspaces"
+set tabstop=4
 set smartindent
 set mouse=a
 set number
@@ -129,3 +129,16 @@ map <C-n> :NERDTreeToggle<CR>
 " vim airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"let g:syntastic_python_python_exe = 'python3'
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_javascript_checkers = ['jshint']
