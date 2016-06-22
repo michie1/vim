@@ -18,6 +18,8 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 set sw=4
 set ts=4 "tabspaces"
 set tabstop=4
+set shiftwidth=4
+set expandtab
 set smartindent
 set mouse=a
 set number
@@ -142,3 +144,5 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_python_python_exe = 'python3'
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_javascript_checkers = ['jshint']
+
+let NERDTreeMouseMode=2
