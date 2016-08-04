@@ -146,3 +146,5 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_javascript_checkers = ['jshint']
 
 let NERDTreeMouseMode=2
+
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
