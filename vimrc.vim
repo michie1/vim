@@ -18,6 +18,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 set sw=4
 set ts=4 "tabspaces"
 set tabstop=4
+set expandtab
 set smartindent
 set mouse=a
 set number
@@ -123,6 +124,7 @@ set undofile
 set undodir=~/.vim/undodir
 
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeMouseMode=2
 :set directory=$HOME/.vim/swapfiles//
 
 
