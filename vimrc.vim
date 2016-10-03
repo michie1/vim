@@ -126,6 +126,7 @@ set undofile
 set undodir=~/.vim/undodir
 
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeMouseMode=2
 :set directory=$HOME/.vim/swapfiles//
 
 
