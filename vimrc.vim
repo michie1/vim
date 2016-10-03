@@ -15,15 +15,16 @@ let OmniCpp_MayCompleteArrow = 1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Finally, the command set sw=4 sets the shift width (the number of characters text is moved sideways for the shift command (<< and >>)). "
-set sw=4
-set ts=4 "tabspaces"
-set tabstop=4
-set shiftwidth=4
+set sw=2
+set ts=2 "tabspaces"
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set mouse=a
 set number
 set relativenumber
+set expandtab
 
 :ca W w
 
