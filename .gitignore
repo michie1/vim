@@ -39,4 +39,4 @@ doc/latex-suite-quickstart.html
 doc/tags
 *.pyc
 
-swapfiles/
+undodir

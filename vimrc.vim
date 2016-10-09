@@ -24,6 +24,7 @@ set smartindent
 set mouse=a
 set number
 set relativenumber
+set expandtab
 
 :ca W w
 
