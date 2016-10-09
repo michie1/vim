@@ -15,10 +15,10 @@ let OmniCpp_MayCompleteArrow = 1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Finally, the command set sw=4 sets the shift width (the number of characters text is moved sideways for the shift command (<< and >>)). "
-set sw=4
-set ts=4 "tabspaces"
-set tabstop=4
-set shiftwidth=4
+set sw=2
+set ts=2 "tabspaces"
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set mouse=a
@@ -75,11 +75,11 @@ colorscheme solarized
 
 
 " coffeescript
-autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/null
+"autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/null
 " autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c <afile>
 
 "nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
+"autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
 
 " Fix backspace
 set bs=2
@@ -145,7 +145,15 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_python_python_exe = 'python3'
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_tex_checkers=['lacheck']
 
 let NERDTreeMouseMode=2
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
