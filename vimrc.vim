@@ -148,6 +148,7 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_tex_checkers=['lacheck']
+let g:elm_syntastic_show_warnings = 1
 
 let NERDTreeMouseMode=2
 
@@ -159,4 +160,9 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
 
-let g:elm_format_autosave = 1
+let g:elm_format_autosave = 0
+let g:elm_setup_keybindings = 0
+
+call plug#begin('~/.vim/plugged')
+Plug 'elmcast/elm-vim'
+call plug#end()
