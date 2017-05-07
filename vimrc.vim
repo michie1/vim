@@ -22,6 +22,10 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set mouse=a
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+endif
 set number
 set relativenumber
 set expandtab
@@ -145,7 +149,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 "let g:syntastic_python_python_exe = 'python3'
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_tex_checkers=['lacheck']
 let g:elm_syntastic_show_warnings = 1
@@ -157,7 +161,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlP .'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
 
 let g:elm_format_autosave = 0
@@ -165,4 +169,15 @@ let g:elm_setup_keybindings = 0
 
 call plug#begin('~/.vim/plugged')
 Plug 'elmcast/elm-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+let g:used_javascript_libs = 'vue'
+au BufRead,BufNewFile *.vue set ft=html
+
+" ack
+nmap <leader>a :tab split<CR>:Ack ""<Left>
+nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+
+nnoremap qq :q<CR>
