@@ -48,7 +48,7 @@ map td :tabclose<CR>
 
 "nmap <F9> \rc<bar>\rr
 "map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-au! BufWritePost .vimrc source % 
+au! BufWritePost .vimrc source %
 "au BufRead,BufNewFile  *.c++  set filetype=c++
 "au BufRead,BufNewFile  *.h  set filetype=c++
 
@@ -116,7 +116,7 @@ noremap <Right> <NOP>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 set foldmethod=indent
-set foldlevel=99 
+set foldlevel=99
 
 "insert } after {
 "autocmd filetype cpp,c inoremap {<CR> {<CR>}<Esc>O
@@ -129,8 +129,6 @@ set foldlevel=99
 set undofile
 set undodir=~/.vim/undodir
 
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeMouseMode=2
 :set directory=$HOME/.vim/swapfiles//
 
 
@@ -154,8 +152,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_tex_checkers=['lacheck']
 let g:elm_syntastic_show_warnings = 1
 
-let NERDTreeMouseMode=2
 
+" nerd tree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeMouseMode=1
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -181,3 +181,10 @@ nmap <leader>a :tab split<CR>:Ack ""<Left>
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
 nnoremap qq :q<CR>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_preview=1 
