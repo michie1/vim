@@ -1,9 +1,14 @@
 set nocp
 
 execute pathogen#infect()
-filetype plugin on
 
 filetype plugin indent on
+
+call plug#begin('~/.vim/plugged')
+Plug 'elmcast/elm-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 set nobackup
 set nowritebackup
@@ -42,10 +47,6 @@ map t3 :tabn 3<CR>
 map tn :tabn<Space>
 map td :tabclose<CR>
 
-"nmap <F9> !g++ % && ./a.out
-"nmap <F9> :w<bar>!g++ echo % && ./a.out
-"nmap <F9> :g++ % && ./a.out
-
 "nmap <F9> \rc<bar>\rr
 "map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 au! BufWritePost .vimrc source %
@@ -56,32 +57,11 @@ au! BufWritePost .vimrc source %
 "let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 
-"row width"
-"set tw=80
-"set wrap
-
-"colorscheme oceandeep
-"colorscheme baycomb
-"colorscheme two2tango
-
-"colorscheme ir_black
-"colorscheme hemisu
-"colorscheme solarized
 syntax enable
 "let g:solarized_termcolors=256
 "set t_Co=256
 set background=dark
 colorscheme solarized
-"colorscheme base16-default
-"colorscheme flattown
-
-"colorscheme PaperColor
-"let base16colorspace=256
-
-
-" coffeescript
-"autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c -b <afile> 2>/dev/null
-" autocmd BufWritePost,FileWritePost *.coffee silent !coffee -c <afile>
 
 "nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
 "autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
@@ -89,19 +69,9 @@ colorscheme solarized
 " Fix backspace
 set bs=2
 
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%71v.\+/
-
-" replaces cout by std::cout
-iab cout  std::cout
-iab endl std::endl
-
 " Bij begin/eindigen vim niet vragen om sessie te openen/ op te slaan
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
-
-" Troep bij begin weghalen ;2R^[[>1:2802;0c
-"autocmd VimEnter * redraw!
 
 " no files in list vim-startify
 let g:startify_files_number = 0
@@ -118,61 +88,32 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 set foldmethod=indent
 set foldlevel=99
 
-"insert } after {
-"autocmd filetype cpp,c inoremap {<CR> {<CR>}<Esc>O
-
-" use English spell checker
-" set spelllang=en_us
-"cabbrev spell setlocal spell spelllang=en_us
-"cabbrev nospell setlocal nospell
-
 set undofile
 set undodir=~/.vim/undodir
 
 :set directory=$HOME/.vim/swapfiles//
 
-
 " vim airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_python_python_exe = 'python3'
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-"let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_tex_checkers=['lacheck']
-let g:elm_syntastic_show_warnings = 1
-
+let g:airline#extensions#ale#enabled = 1
 
 " nerd tree
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeMouseMode=1
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
+" ctrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP .'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
 
+" Elm
 let g:elm_format_autosave = 0
 let g:elm_setup_keybindings = 0
 
-call plug#begin('~/.vim/plugged')
-Plug 'elmcast/elm-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-call plug#end()
-
+" Vue
 let g:used_javascript_libs = 'vue'
 au BufRead,BufNewFile *.vue set ft=html
 
@@ -180,11 +121,14 @@ au BufRead,BufNewFile *.vue set ft=html
 nmap <leader>a :tab split<CR>:Ack ""<Left>
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-nnoremap qq :q<CR>
-
+" netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-let g:netrw_preview=1 
+let g:netrw_preview=1
+
+" ale
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
+let g:ale_lint_delay=1000
