@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'elmcast/elm-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set nobackup
@@ -127,8 +128,12 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-let g:netrw_preview=1
+let g:netrw_preview = 1
 
 " ale
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
-let g:ale_lint_delay=1000
+let g:ale_lint_delay = 1000
+
+" git
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 1
