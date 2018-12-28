@@ -108,7 +108,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP .'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git|dist)$'
 
 " Elm
 let g:elm_format_autosave = 0
@@ -131,7 +131,9 @@ let g:netrw_winsize = 25
 let g:netrw_preview = 1
 
 " ale
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint', 'tsserver']}
+let g:ale_fixers = {'javascript': []}
+"let g:ale_javascript_eslint_use_global = 0
 let g:ale_lint_delay = 1000
 
 " git
