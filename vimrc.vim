@@ -5,10 +5,10 @@ execute pathogen#infect()
 filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
-Plug 'elmcast/elm-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'jparise/vim-graphql'
 call plug#end()
 
 set nobackup
@@ -16,9 +16,9 @@ set nowritebackup
 
 :set tags=tags;
 
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 1
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"let OmniCpp_MayCompleteDot = 1
+"let OmniCpp_MayCompleteArrow = 1
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Finally, the command set sw=4 sets the shift width (the number of characters text is moved sideways for the shift command (<< and >>)). "
 set sw=2
@@ -64,9 +64,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-"nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-"autocmd BufWritePost,FileWritePost *.less silent !lessc % > %:t:r.css
-
 " Fix backspace
 set bs=2
 
@@ -105,22 +102,19 @@ let NERDTreeMouseMode=1
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " ctrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP .'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git|dist)$'
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP .'
+"let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git|dist)$'
 
-" Elm
-let g:elm_format_autosave = 0
-let g:elm_setup_keybindings = 0
-
-" Vue
-let g:used_javascript_libs = 'vue'
-au BufRead,BufNewFile *.vue set ft=html
+" fzf
+nnoremap <C-p> :Files<Cr>
+nmap <leader>a :tab split<CR>:Rg 
+nmap <leader>A :tab split<CR>:Rg <C-r><C-w><CR>
 
 " ack
-nmap <leader>a :tab split<CR>:Ack ""<Left>
-nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+"nmap <leader>a :tab split<CR>:Ack ""<Left>
+"nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
 " netrw
 let g:netrw_banner = 0
@@ -131,9 +125,9 @@ let g:netrw_winsize = 25
 let g:netrw_preview = 1
 
 " ale
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint', 'tsserver']}
-let g:ale_fixers = {'javascript': []}
-"let g:ale_javascript_eslint_use_global = 0
+let g:ale_completion_enabled = 1
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint', 'tsserver', 'gqlint']}
+let g:ale_fixers = {'javascript': [], 'typescript': ['prettier']}
 let g:ale_lint_delay = 1000
 
 " git
