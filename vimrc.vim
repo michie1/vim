@@ -1,8 +1,6 @@
-set nocp
 
 execute pathogen#infect()
 
-filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -10,16 +8,46 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'janko/vim-test'
 call plug#end()
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+call vundle#end()
+filetype plugin indent on
+
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+set cmdheight=2
+set updatetime=300
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 
 set nobackup
 set nowritebackup
 
 :set tags=tags;
-
-"let OmniCpp_MayCompleteDot = 1
-"let OmniCpp_MayCompleteArrow = 1
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Finally, the command set sw=4 sets the shift width (the number of characters text is moved sideways for the shift command (<< and >>)). "
 set sw=2
@@ -50,14 +78,7 @@ map tn :tabn<Space>
 map td :tabclose<CR>
 
 "nmap <F9> \rc<bar>\rr
-"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 au! BufWritePost .vimrc source %
-"au BufRead,BufNewFile  *.c++  set filetype=c++
-"au BufRead,BufNewFile  *.h  set filetype=c++
-
-"let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-"let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
 
 syntax enable
 "let g:solarized_termcolors=256
@@ -68,21 +89,10 @@ colorscheme solarized
 " Fix backspace
 set bs=2
 
-" Bij begin/eindigen vim niet vragen om sessie te openen/ op te slaan
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-
-" no files in list vim-startify
-let g:startify_files_number = 0
-let g:startify_enable_special = 0
-
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-"http://stackoverflow.com/questions/908269/opening-ctags-in-new-tab-in-gvim
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 set foldmethod=indent
 set foldlevel=99
@@ -95,6 +105,7 @@ set undodir=~/.vim/undodir
 " vim airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 
 " nerd tree
@@ -126,7 +137,7 @@ let g:netrw_winsize = 25
 let g:netrw_preview = 1
 
 " ale
-let g:ale_completion_enabled = 1
+"let g:ale_completion_enabled = 1
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint', 'tsserver', 'gqlint']}
 let g:ale_fixers = {'javascript': [], 'typescript': ['prettier']}
 let g:ale_lint_delay = 1000
