@@ -1,0 +1,4 @@
+{
+  "tsserver.npm": "/home/michiel/.nvm/versions/node/v10.15.3/bin/npm",
+	"coc.preferences.formatOnSaveFiletypes": ["typescript", "json", "typescriptreact"]
+}
