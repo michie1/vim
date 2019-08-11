@@ -10,7 +10,8 @@ call plug#end()
 execute pathogen#infect()
 
 nnoremap <Leader>vr :source $MYVIMRC<CR>
-set directory^=$HOME/.vim/tmp//
+set noswapfile
+"set directory^=$HOME/.vim/tmp//
 
 syntax on
 set background=dark
