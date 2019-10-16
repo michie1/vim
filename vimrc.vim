@@ -46,6 +46,8 @@ nnoremap <C-p> :Files<Cr>
 nmap <leader>g :Rg 
 "nmap <leader>G :tab split<CR>:Rg <C-r><C-w><CR>
 nmap <leader>G :Rg <C-r><C-w><CR>
+nmap <leader>f :BLines<Cr>
+nmap <leader>F :BLines <C-r><C-w><Cr>
 
 nnoremap <silent> <leader>c  :!git checkout -p %<cr> <bar> <cr> <bar> :edit<cr>
 nnoremap <silent> <leader>a  :!git add -p %<cr> <bar> <cr>
