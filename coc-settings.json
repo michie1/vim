@@ -1,4 +1,40 @@
 {
-  "tsserver.npm": "/home/michiel/.nvm/versions/node/v10.15.3/bin/npm",
-	"coc.preferences.formatOnSaveFiletypes": ["typescript", "json", "typescriptreact"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "javascript",
+    "json",
+    "typescriptreact",
+    "html",
+    "python",
+    "elm",
+    "yaml",
+    "md"
+  ],
+  "coc.preferences.promptInput": false,
+  "prettier.requireConfig": true,
+  "python.jediEnabled": false,
+  "python.venvFolders": ["envs", ".pyenv", ".direnv", "venv"],
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--show-column-numbers",
+    "--strict"
+  ],
+  "python.formatting.provider": "black",
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "elmPath": "./node_modules/.bin/elm",
+        "elmFormatPath": "./node_modules/.bin/elm-format",
+        "elmAnalyseTrigger": "change"
+      }
+    }
+  },
+  "yank.highlight.enable": false,
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "angular.experimental-ivy": true
 }

@@ -45,3 +45,4 @@ doc/tags
 undodir
 view
 swapfiles
+.mypy_cache
