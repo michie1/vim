@@ -8,7 +8,9 @@
     "python",
     "elm",
     "yaml",
-    "md"
+    "md",
+    "MD",
+    "scss"
   ],
   "coc.preferences.promptInput": false,
   "prettier.requireConfig": true,
@@ -36,5 +38,11 @@
   "yank.highlight.enable": false,
   "typescript.preferences.useAliasesForRenames": false,
   "typescript.preferences.importModuleSpecifier": "relative",
-  "angular.experimental-ivy": true
+  "suggest.noselect": true,
+  "suggest.enablePreselect": true,
+  "eslint.autoFixOnSave": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "tsserver.useLocalTsdk": true,
+  "tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+  "typescript.autoClosingTags": false
 }

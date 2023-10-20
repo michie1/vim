@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 "Plug 'oguzbilgic/vim-gdiff'
 "Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
+"Plug 'elmcast/elm-vim'
 "Plug 'lighttiger2505/sqls.vim'
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'prabirshrestha/async.vim'
@@ -15,6 +16,9 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-exchange'
+Plug 'lifepillar/vim-solarized8'
+"Plug 'mogelbrod/vim-jsonpath'
+Plug 'github/copilot.vim'
 call plug#end()
 
 execute pathogen#infect()
@@ -22,15 +26,19 @@ execute pathogen#infect()
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 set noswapfile
 
-syntax on
+syntax enable
 set background=dark
-colorscheme solarized
+set termguicolors
+colorscheme solarized8
+
 filetype plugin indent on
+filetype indent on
 set mouse=a
 
+set backspace=indent,eol,start
 set number
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set cmdheight=2
 set updatetime=300
@@ -40,9 +48,6 @@ set updatetime=300
 :inoremap WW <Esc>:w<CR>
 :noremap WW :w<CR>
 "nnoremap W :w<cr>
-
-set undofile
-set undodir=~/.vim/undodir
 
 map th :tabprev<CR>
 map tl :tabnext<CR>
@@ -58,11 +63,14 @@ let g:gitgutter_signs = 1
 
 nnoremap <C-p> :Files<Cr>
 "nmap <leader>g :tab split<CR>:Rg
+" below space at end is on purpose
 nmap <leader>g :Rg 
 "nmap <leader>G :tab split<CR>:Rg <C-r><C-w><CR>
 nmap <leader>G :Rg <C-r><C-w><CR>
+vnoremap <leader>G :<C-u>execute "Rg " . getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]<CR>
 nmap <leader>f :BLines<Cr>
 nmap <leader>F :BLines <C-r><C-w><Cr>
+
 
 nnoremap <silent> <leader>c :!git checkout -p %<cr> <bar> <cr> <bar> :edit<cr>
 nnoremap <silent> <leader>a :!git add -p %<cr> <bar> <cr>
@@ -95,6 +103,9 @@ nmap <silent> gr <Plug>(coc-references-used)
 "nmap <silent> gr <Plug>(coc-references) 
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
 nmap <leader>ac  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 
@@ -121,10 +132,16 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "command! -nargs=0 VT :silent execute '!BASH_POST_RC="yarn test:visual:update '. substitute(expand('%:t'), '.fixture.tsx', '', 'g') .'" gnome-terminal &'
 
 " Test current file
-nmap <silent> yt :silent !BASH_POST_RC='npm run test % -- -- --watch' gnome-terminal<cr><cr>
+nmap <silent> yt :silent !BASH_POST_RC='npx jest --config Geofiber/jest.config.js % --watch' gnome-terminal<cr><cr>
 
 " open spec file
 nmap <leader>t :execute 'edit ' . system('find . -name ' . expand('%:t:r') . '.spec.ts')<CR>
+
+" open html file
+nmap <leader>h :execute 'edit ' . system('find . -name ' . expand('%:t:r') . '.html')<CR>
+
+" open ts file
+nmap <leader>co :execute 'edit ' . system('find . -name ' . expand('%:t:r') . '.ts')<CR>
 
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -140,11 +157,31 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 "inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -152,7 +189,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Show current selected word highlighted in rest of buffer
  autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :silent %!prettier --stdin-filepath %
 "command! -nargs=0 Prettier2 :!yarn prettier --write % <CR><CR>
 
 
@@ -184,12 +221,23 @@ source ~/.vim/psql-settings.vim
 "nmap <leader>o ?it(<CR>ct(it.only<ESC><C-o>
 "nmap <leader>o ?it(<CR>:s/it(/it.only(/ge<CR>:s/it.skip(/it.only(/ge<CR>2<C-o>
 ":help keeppattern does not store the search
-nmap <leader>o :keepp /^it<CR>:keepp ?^it<CR>:keepp :s/it(/it.only(/ge<CR>:keepp :s/it.skip(/it.only(/ge<CR>
-nmap <leader>i :keepp /^it<CR>:keepp ?^it<CR>:keepp :s/it.only(/it(/ge<CR>:keepp :s/it.skip(/it(/ge<CR>
-nmap <leader>s :keepp /^it<CR>:keepp ?^it<CR>:keepp :s/it(/it.skip(/ge<CR>:keepp :s/it.only(/it.skip(/ge<CR>
+nmap <leader>o :keepp /^\s*it<CR>:keepp ?^\s*it<CR>:keepp :s/it(/it.only(/ge<CR>:keepp :s/it.skip(/it.only(/ge<CR>
+nmap <leader>i :keepp /^\s*it<CR>:keepp ?^\s*it<CR>:keepp :s/it.only(/it(/ge<CR>:keepp :s/it.skip(/it(/ge<CR>
+nmap <leader>s :keepp /^\s*it<CR>:keepp ?^\s*it<CR>:keepp :s/it(/it.skip(/ge<CR>:keepp :s/it.only(/it.skip(/ge<CR>
 " Keep last position with bookmarks?
 
-nmap <leader>l iconsole.log(
+nmap <leader>m :Ex ~/geosmartdesign/Geofiber/server/migrations<CR>G<CR>
+
+" console.log shortcuts 
+nmap <leader>ll :call ConsoleLogWord()<CR>
+function! ConsoleLogWord()
+    let l:word = expand("<cword>")
+    execute "normal! oconsole.log('" . l:word . ":', " . l:word . ");\<Esc>"
+endfunction
+
+nmap <leader>li iconsole.log(
+
+"nmap <leader>nl zt:execute "vsplit +".line(".")." ~/geosmartdesign/Geofiber/client/assets/i18n/en.json"<CR>zt
 
 command! -count=1 HFiles call fzf#run({ 'source': 'git log HEAD -n <count> --diff-filter=MA --name-only --pretty=format: | sed -e /^$/d'})
 
@@ -206,3 +254,29 @@ let &t_TE = ""
 
 " https://stackoverflow.com/questions/178257/how-to-avoid-syntax-highlighting-for-large-files-in-vim
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+
+" https://github.com/neoclide/coc-css
+autocmd FileType scss setl iskeyword+=@-@
+
+" elm format
+" let g:elm_format_autosave = 1
+
+"let g:coc_disable_transparent_cursor = 1
+"https://github.com/neoclide/coc.nvim/wiki/F.A.Q#cursor-disappeared-after-exit-coclist
+
+" persistent undo
+set undodir=~/.config/vim-persisted-undo
+set undofile
+
+" use filetype and not extention
+" get filetype by using echo &filetype
+let g:copilot_filetypes = {
+      \ '*': 0,
+      \ 'html': 1,
+      \ 'css': 1,
+      \ 'scss': 1,
+      \ 'json': 1,
+      \ 'javascript': 1,
+      \ 'typescript.tsx': 1,
+      \ 'typescript': 1,
+      \ }

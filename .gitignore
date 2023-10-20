@@ -46,3 +46,6 @@ undodir
 view
 swapfiles
 .mypy_cache
+
+plugged
+plugged-backup
