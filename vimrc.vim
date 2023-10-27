@@ -215,7 +215,7 @@ noremap <leader>pc :VipsqlSendInterrupt<CR>
 " Select data from the selected table.
 nmap <leader>pd :VipsqlShell <CR>select * from <C-r><C-w>;<CR>
 
-source ~/.vim/psql-settings.vim
+" source ~/.vim/psql-settings.vim
 " let g:omni_sql_no_default_maps = 1
 
 " reverse search to it(|it.only(|it.skip(
