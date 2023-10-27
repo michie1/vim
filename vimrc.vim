@@ -59,6 +59,19 @@ let g:airline#extensions#coc#enabled = 1
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 
+function RepoOrDirectoryName()
+  silent let repoName = system("git rev-parse --show-toplevel 2>/dev/null")
+  let repoName = substitute(repoName, "\n", "", "")
+  if repoName == ""
+    let name = getcwd()
+  else
+    let name = repoName
+  endif
+  return fnamemodify(name, ":t")
+endfunction
+
+let g:airline_section_a = airline#section#create(['mode', ' ', '%{RepoOrDirectoryName()}'])
+
 let g:gitgutter_enabled = 1
 let g:gitgutter_signs = 1
 
