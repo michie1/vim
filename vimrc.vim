@@ -19,6 +19,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'lifepillar/vim-solarized8'
 "Plug 'mogelbrod/vim-jsonpath'
 Plug 'github/copilot.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 execute pathogen#infect()
