@@ -290,7 +290,10 @@ let g:copilot_filetypes = {
       \ 'css': 1,
       \ 'scss': 1,
       \ 'json': 1,
+      \ 'yaml': 1,
       \ 'javascript': 1,
       \ 'typescript.tsx': 1,
       \ 'typescript': 1,
+      \ 'terraform': 1,
+      \ 'sh': 1,
       \ }
