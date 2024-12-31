@@ -26,7 +26,8 @@
     "--show-column-numbers",
     "--strict"
   ],
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "pyink",
+  "python.linting.pylintEnabled": false,
   "languageserver": {
     "elmLS": {
       "command": "elm-language-server",

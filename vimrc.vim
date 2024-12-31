@@ -20,6 +20,7 @@ Plug 'lifepillar/vim-solarized8'
 "Plug 'mogelbrod/vim-jsonpath'
 Plug 'github/copilot.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 execute pathogen#infect()
@@ -104,6 +105,9 @@ nnoremap H :History<cr>
 set hidden
 
 let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier']
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -284,6 +288,10 @@ set undofile
 
 " use filetype and not extention
 " get filetype by using echo &filetype
+" let g:copilot_assume_mapped = 1
+" imap <silent><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:false
+autocmd FileType python imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_filetypes = {
       \ '*': 0,
       \ 'html': 1,
@@ -296,4 +304,5 @@ let g:copilot_filetypes = {
       \ 'typescript': 1,
       \ 'terraform': 1,
       \ 'sh': 1,
+      \ 'python': 1,
       \ }
